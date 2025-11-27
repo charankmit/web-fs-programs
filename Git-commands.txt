@@ -1,0 +1,137 @@
+I will assume you are on Windows, but the commands are the same everywhere.
+
+0. Prerequisites
+
+Install Git
+Download and install from the Git website.
+During install, accept defaults unless you know what you are doing.
+Create a GitHub account
+Sign up on GitHub if you do not already have an account.
+
+Configure Git (only once per system)
+
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+
+1. Create a repo on GitHub
+
+Log in to GitHub.
+
+Click the "+" icon at the top right → "New repository".
+
+Fill details:
+Repository name: for example web-fs-programs
+Description: optional
+Visibility: Public or Private
+
+Do not tick "Initialize this repository with a README" if you are a beginner and want fewer conflicts.
+
+Click "Create repository".
+
+On the next page, you will see a section "…or push an existing repository from the command line". We will use that.
+
+Keep that page open.
+2. Go to your project folder
+Suppose your project is in D:\projects\web-fs-programs.
+
+Open Command Prompt or Git Bash and run:
+
+cd /d D:\projects\web-fs-programs
+
+Check that files are there:
+dir
+
+
+You should see your project files and folders.
+3. Initialize Git in your project
+Run:
+git init
+
+This creates a hidden .git folder and turns your folder into a git repository.
+4. Add files and make the first commit
+Add all files to staging:
+git add .
+
+Create your first commit:
+git commit -m "Initial commit"
+
+5. Connect local repo to GitHub repo (remote)
+
+On the GitHub page for your new repository you will see a URL like:
+
+HTTPS: https://github.com/your-username/web-fs-programs.git
+or
+
+SSH: git@github.com:your-username/web-fs-programs.git
+
+Use the HTTPS one if you are not sure.
+
+In your project folder run:
+
+git remote add origin https://github.com/your-username/web-fs-programs.git
+
+
+You can verify:
+
+git remote -v
+
+6. Choose branch name (main or other)
+
+If you want to use a specific branch, for example web-fs-programs, you can rename or create it.
+
+Option A: Use main (simple option)
+
+git branch -M main
+git push -u origin main
+
+
+Option B: Use a custom branch name (for example web-fs-programs)
+
+git branch -M web-fs-programs
+git push -u origin web-fs-programs
+
+
+The first time you push, Git may ask for your GitHub username and password or a personal access token if you use HTTPS.
+
+After this, your project is on GitHub. Refresh the repo page in the browser and you should see all files.
+
+7. Daily workflow after setup
+
+When you change code later, the cycle is:
+
+Check status
+
+git status
+
+
+Stage changed files
+
+git add .
+
+
+Commit with a message
+
+git commit -m "Describe what you changed"
+
+
+Push to GitHub
+
+If your branch is web-fs-programs:
+
+git push
+
+
+or:
+
+git push origin web-fs-programs
+
+8. Cloning an existing GitHub project to your system
+
+If the repo already exists on GitHub and you want it on your machine:
+
+cd /d D:\projects
+git clone https://github.com/your-username/web-fs-programs.git
+cd web-fs-programs
+
+
+Then use the same workflow: git add → git commit → git push.
