@@ -4,7 +4,193 @@
         "level": "Beginner",
         "description": "Write a program to calculate the sum of the first N numbers. \nEx: input=5 =>5+4+3+2+1 =15\noutput=15",
         "code": "import java.util.Scanner;\n\npublic class SumOfN {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n\n        int n = sc.nextInt();\n        int sum = 0;\n\n        for (int i = n; i >= 1; i++) {\n            sum += i;\n        }\n\n        System.out.println(sum);\n    }\n}"
-    },
+    }, 
+    {
+    "name": "Anagram",
+    "level": "Beginner",
+    "description": "Write a Java program to check if two numbers are anagrams or not. \nIf Anagram Number print \"Yes\" else print \"No\".\n\nDescription: A number is said to be an anagram of some other number \nif it can be made equal to the other number by just shuffling the digits in it.\n\nSample 1:\ninput=123\n321\noutput=Yes\n\nSample 2:\ninput=121\n113\noutput=No",
+    "code": "/*Write a Java program to check if two numbers are anagrams or not. \nIf Anagram Number print \"Yes\" else print \"No\".\n\nDescription: A number is said to be an anagram of some other number \nif it can be made equal to the other number by just shuffling the digits in it.\n\nSample 1:\ninput=123\n321\noutput=Yes\n\nSample 2:\ninput=121\n113\noutput=No\n*/\nimport java.util.Scanner;\nclass Anagram \n{ \n\tstatic void updateFreq(int n, int freq[]) \n\t{\n\t\twhile (n > 0) \n\t\t{ \n\t\t\tint digit = n % 10;  \n\t\t\tfreq[digit]++;\n\t\t\tn /= 10; \n\t\t} \n\t}  \n\tstatic boolean areAnagrams(int a, int b) \n\t{\n\t\tint [] freqA = new int[10]; \n\t\tint [] freqB = new int[10]; \n\n\t\tupdateFreq(a, freqA);\n\t\tupdateFreq(b, freqB); \n\t\tfor (int i = 0; i < 10; i++) \n\t\t{\n\t\t\tif (freqA[i] != freqB[i]) \n\t\t\t\treturn false; \n\t\t} \n\t\treturn true; \n\t} \n\tpublic static void main (String[] args) \n\t{ \n\t\tScanner sc = new Scanner(System.in);\n\t\tint a = sc.nextInt(), b = sc.nextInt(); \n\t\n\t\tif (areAnagrams(a, b)) \n\t\t\tSystem.out.println(\"Yes\"); \n\t\telse\n\t\t\tSystem.out.println(\"No\"); \n\t} \n} \n"
+  },
+  {
+    "name": "Automorphic",
+    "level": "Beginner",
+    "description": "Write a Java Program to check whether the entered number is Automorphic Number or not.\n\nDescription- A number is called Automorphic if and only if its square ends \nin the same digits as the number itself.\n\nSample 1:\ninput=5\noutput=Yes\n\nSample 2:\ninput=76\noutput=Yes\n\nSample 3:\ninput=14\noutput=No",
+    "code": "\n\nimport java.util.Scanner;\npublic class Automorphic \n{\n    public static void main(String args[])\n\t{\n        Scanner in = new Scanner(System.in);\n        int num = in.nextInt();\n        int c=0, sqr = num*num;\n        int temp =num;  \n        while(temp>0)\n\t\t{\n            c++;\n            temp=temp/10;\n        }\n \n        int lastSquareDigits = (int) (sqr%(Math.pow(10,c)));\n \n        if(num == lastSquareDigits)\n            System.out.println(\"Yes\");\n        else\n            System.out.println(\"No\");\n    }\n}"
+  },
+  {
+    "name": "Binary_Checking",
+    "level": "Beginner",
+    "description": "Write a java program to check whether the entered number is binary number or not\n\nSample :\n111100 //input\ntrue //output\n\nSample 2 :\n1120 //input \nfalse //output",
+    "code": "\nimport java.util.Scanner;\nclass Binary_Checking\n{\n\tpublic static boolean isBinaryNumber(int num) \n\t{ \n\t\tif(num < 0) \n\t\t\treturn false; \n\n\t\twhile(num != 0) \n\t\t{\n\t\t\tif (num % 10 > 1) \n\t\t\t{ \n\t\t\t\treturn false; \n\t\t\t} \n\t\t\tnum = num / 10; \n\t\t} \n\t\treturn true; \n\t} \n\tpublic static void main(String args[]) \n\t{ \n\t\tScanner sc=new Scanner(System.in);\n\t\tint N = sc.nextInt();\n\t\tSystem.out.println(isBinaryNumber(N)); \n\t} \n}\n"
+  },
+  {
+    "name": "Binary_Decimal",
+    "level": "Beginner",
+    "description": "Write a java Program for Binary To Decimal Conversion\n\nSample 1:\ninput=1010\noutput=10\n\nSample 2:\ninput=120001\noutput=-1\n\ncase = 1\ninput =111\noutput =7\ncase = 2\ninput =1010\noutput =10\ncase = 3\ninput =100001\noutput =33\ncase = 4\ninput =120001\noutput =-1\ncase = 5\ninput = 1234\noutput = -1",
+    "code": "\nimport java.util.Scanner;\nclass Binary_Decimal\n{\n\tstatic int binaryToDecimal(int n)\n\t{\n\t\tint num = n;\n\t\tint dec_value = 0;\n\t\tint base = 1;\n\n\t\tint temp = num;\n\t\twhile (temp > 0) \n\t\t{\n\t\t\tint last_digit = temp % 10;\n\t\t\tif(last_digit!=0 && last_digit!=1)\n\t\t\t\treturn -1;\n\t\t\tdec_value += last_digit * base;\n\t\t\tbase = base * 2;\n\t\t\ttemp = temp / 10;\n\t\t}\n\t\treturn dec_value;\n\t}\n\n\tpublic static void main(String[] args)\n\t{\n\t\tScanner sc=new Scanner(System.in);\n\t\tint num = sc.nextInt();\n\t\tSystem.out.println(binaryToDecimal(num));\n\t}\n}\n"
+  },
+  {
+    "name": "CamelCaseNumber",
+    "level": "Beginner",
+    "description": "Write a java program to find if a given positive number is a Camel Case Number or Not\n\nA number is said to be Camel Case Number if the First digit of the number is always greater than \nor equal to the digits which are right side to it and if a number contains a single digit it is \nalways assumed it as a Camel Case.\nIf the given Number is Camel Case Print \"Camel Case\" else print \"Not Camel Case\"\nIf any negative number is given print \"Not Camel Case\"\n\nsample 1:\ninput=543 \noutput=Camel Case\n\nsample 2:\ninput=582 \noutput=Not Camel Case \n\nSample 3:\ninput=3\noutput=Camel Case",
+    "code": "\n\nimport java.util.Scanner;\npublic class CamelCaseNumber\n{\n\tpublic static void main(String[] args)\n\t{\n\t\tScanner sc = new Scanner (System.in);\n\t\tint num = sc.nextInt();\n\t\tint max=0,digit=0,temp=num;\n\t\t\n\t\twhile (num > 0)\n\t\t{\n\t\t\tdigit =num%10;\n\t\t\tif(digit > max)\n\t\t\t\tmax=digit;\n\t\t\tnum=num/10;\n\t\t}\n\t\tif(digit>=max && temp>0)\n\t\t\tSystem.out.println(\"Camel Case\");\n\t\telse\n\t\t\tSystem.out.println(\"Not Camel Case\");\n\t}\n}\n\n"
+  },
+  {
+    "name": "Character_Check",
+    "level": "Beginner",
+    "description": "Write a Java program to check whether a character(read only one character) is an alphabet, \ndigit or special character.\n\nSample:\n\ninput=1\noutput=Digit\n\ninput=&\noutput=Special Character\n\ninput=Q\nAlphabet",
+    "code": "\nimport java.util.Scanner;\npublic class Character_Check \n{\n    public static void main(String[] args) \n\t{\n\t\tScanner sc=new Scanner(System.in);\n\t\tString ch=sc.next();\n        char c = ch.charAt(0);\n        if( (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))\n            System.out.println(\"Alphabet\");\n\t\telse if(c >= '0' && c <= '9')\n            System.out.println(\"Digit\");\n        else\n            System.out.println(\"Special Character\");\n    }\n}\n"
+  },
+  {
+    "name": "Decimal_AnyBase",
+    "level": "Beginner",
+    "description": "Write a Java program to perform Decimal to any base Conversion.\n\nRead two integers, First integer indicates decimal value and \nsecond integer indicates base. After conversion print the output.\n\nNote: If base<=0 or base>=9 print -1.\n\nSample 1:\ninput=10\n2\noutput=1010\n\nSample 2:\ninput=100\n5\noutput=400",
+    "code": "\nimport java.util.Scanner;\npublic class Decimal_AnyBase\n{\n\tpublic static void main(String[] args) \n\t{  \n\t    Scanner in= new Scanner(System.in);\n\t\tint num=in.nextInt();\n\t\tint base=in.nextInt();\n\t\tint i=1, converted=0;\n\t\tif (base<=0 || base>=9)\n\t\t\tSystem.out.println(\"-1\");\n\t\telse\n\t\t{\t\t\t\n\t\t\twhile(num!=0)\n\t\t\t{\n\t\t\t\tconverted += i*(num%base);\n\t\t\t\tnum = num/base;\n\t\t\t\ti=i*10;\n\t\t\t}\n\t\t\tSystem.out.println(converted);\n\t\t}\n\t}\n}\n"
+  },
+  {
+    "name": "Decimal_Binary",
+    "level": "Beginner",
+    "description": "Write a Java Program to Convert a decimal number into its \nbinary representation.\n\nExample:\nInput: 5\nOutput: 101\n \nInput: 12\nOutput: 1100",
+    "code": "\nimport java.util.Scanner;\n \npublic class Decimal_Binary\n{\n\tpublic static void main(String[] args) {\n\t    \n\t    Scanner in= new Scanner(System.in);\n\t\tint num = in.nextInt();\n\t\tint i=1, binary=0;\n\t\twhile(num!=0)\n\t\t{\n\t\t    binary += i*(num%2);\n\t\t    num = num/2;\n\t\t    i=i*10;\n\t\t}\n\t\t\n\t\tSystem.out.println(binary);\n\t}\n}\n"
+  },
+  {
+    "name": "Disarium",
+    "level": "Beginner",
+    "description": "Write a Program in Java to check whether given number is a Disarium Number or not.\n\nDisarium Number: A number is called Disarium if sum of its digits powered with their \nrespective positions is equal to the number itself.\n\nFor example 135 is a DISARIUM\n(Workings 1^1+3^2+5^3 = 135)\n\nSample :\nInput= 135\nOutput= Yes \n\nInput=89\nOutput=Yes \n\nInput=80\nOutput=No",
+    "code": "\nimport java.util.Scanner;\nclass Disarium\n{  \n\tstatic boolean check(int n) \n\t{ \n\t\tint count = Integer.toString(n).length(); \n\t\tint sum = 0;\n\t\tint t = n; \n\t\twhile (t!=0) \n\t\t{ \n\t\t\tint r = t%10; \n\t\t\tsum = (int) (sum + Math.pow(r,count)); \n\t\t\tt = t/10; \n\t\t\tcount--;\n\t\t}\n\t\treturn (sum == n); \n\t} \n\tpublic static void main(String[] args) \n\t{\n\t\tScanner sc=new Scanner(System.in);\n\t\tint n = sc.nextInt(); \n\t\tSystem.out.println(check(n) ? \"Yes\" : \"No\"); \n\t} \n} \n"
+  },
+  {
+    "name": "DuckNumber",
+    "level": "Beginner",
+    "description": "Write a Java program to check whether a number is a Duck Number or not.\n\nA Duck number is a number which has zeroes present in it, \nbut there should be no zero present in the beginning of the number.\n\nSample\ninput=3210\noutput=true\n\ninput=0234\noutput=false\n\ninput=1234\noutput=false",
+    "code": "\nimport java.util.*;\n\nclass DuckNumber\n{\n    public static void main(String args[])\n    {\n        Scanner sc=new Scanner(System.in);\n\t\tString s=sc.next();\n\t\tint count=0;\n\t\tfor(int i=1;i<s.length();i++)\n\t\t\tif(s.charAt(i)=='0')\n\t\t\t\tcount++;\n\t\tif(count>0 && s.charAt(0)!='0')\n\t\t\tSystem.out.println(\"true\");\n\t\telse\n\t\t\tSystem.out.println(\"false\");\n\t}\n}\n\t\t"
+  },
+  {
+    "name": "Factorial",
+    "level": "Beginner",
+    "description": "Write a java program to find Factorial of a Number Using Recursion\n\nsample:\ninput=5\noutput=120\nTest cases:\ncase=1\ninput=5\noutput=120\n\ncase=2\ninput=6\noutput=720",
+    "code": "\n\nimport java.util.Scanner;\npublic class Factorial\n{\n\tstatic int fact(int x)\n    {\n        if(x > 1)\n        {\n            return(x * fact(x - 1));\n        }\n        return 1;\n    }\n    public static void main(String[] args) \n    {\n        int n, mul;\n        Scanner s = new Scanner(System.in);\n        n = s.nextInt();\n        System.out.println(fact(n));\n    }\n    \n}\n"
+  },
+  {
+    "name": "Fibonacci",
+    "level": "Beginner",
+    "description": "Write a Java program to print the fibonacci series upto 'n' number of terms\nif n<=0 print -1\n\nsample Input and Output:\ninput=10                      \noutput=0 1 1 2 3 5 8 13 21 34                                                                                              \n\nTest Cases:\ncase=1\ninput=8\noutput=0 1 1 2 3 5 8 13\n\ncase=2\ninput=10                      \noutput=0 1 1 2 3 5 8 13 21 34\n\ncase=3\ninput=1\noutput=0\n\ncase=4\ninput=-5\noutput=-1",
+    "code": "\nimport java.util.Scanner;\nclass Fibonacci\n{\n\tpublic static void main(String args[])  \n\t{  \n\t\tScanner sc=new Scanner(System.in);\n\t\tint n1=0,n2=1,n3,i;\n\t\tint count=sc.nextInt();  \n\t\tif(count<1)\n\t\t\tSystem.out.println(\"-1\");\n\t\telse if(count==1)\n\t\t\tSystem.out.print(n1);\n\t\telse\n\t\t{\n\t\t\tSystem.out.print(n1+\" \"+n2);//printing 0 and 1        \n\t\t\tfor(i=3;i<=count;++i)//loop starts from 3 because 0 and 1 are already printed    \n\t\t\t{    \n\t\t\t\tn3=n1+n2;    \n\t\t\t\tSystem.out.print(\" \"+n3);    \n\t\t\t\tn1=n2;    \n\t\t\t\tn2=n3;    \n\t\t\t}  \n\t\t}\n\t}\t\t\n}\n"
+  },
+  {
+    "name": "FizzBuzz",
+    "level": "Beginner",
+    "description": "Write a program that prints the numbers from 1 to 100 and for multiples of '3' print \"Fizz\" instead of the number,\nfor the multiples of '5' print \"Buzz\" and for multiples of '15' print FizzBuzz.",
+    "code": "\nclass  FizzBuzz\n{\n\tpublic static void main(String args[])\n\t{\n\t\tfor(int i = 1; i <= 50; i++) \n\t\t{\n            if(i % (3*5) == 0) \n\t\t\t\tSystem.out.println(\"FizzBuzz\");\n            else if(i % 5 == 0) \n\t\t\t\tSystem.out.println(\"Buzz\");\n            else if(i % 3 == 0) \n\t\t\t\tSystem.out.println(\"Fizz\");\n            else \n\t\t\t\tSystem.out.println(i);\n        } \n\t}\n}"
+  },
+  {
+    "name": "GrossSalary",
+    "level": "Beginner",
+    "description": "Write a Java program \nCreate an Employee class to read employee details like Empno, name and \nbasic salary then calculate gross salary of an employee with respect to \nspecified conditions mentioned below and then print basic details along with gross.\n\nIf Basic salary<=10k then HRA=20%;DA=80%\nIf Basic salary<=20k then HRA=25%;DA=90%\nIf Basic salary>20k then HRA=30%;DA=95%\nGross salary= Basic salary + HRA+ DA\n\nSample:\nInput=\nEnter the employee id:101\nEnter the employee name:Varun\nEnter the basic salary of an employee:25000\nOutput=\nId: 101\nName: Varun\nBasic salary: 25000\nGross salary: 56250.0",
+    "code": "\n\nimport java.util.*;\nclass Employee\n{\n\tprivate String empid;\n\tprivate String empname;\n\tprivate int bsal;\n\tprivate float gross;\n\tpublic void read()\n\t{\n\t\tScanner scan= new Scanner(System.in);\n\t\tSystem.out.print(\"Enter the employee id:\");\n\t\tempid=scan.next();\n\t\tSystem.out.print(\"Enter the employee name:\");\n\t\tempname=scan.next();\n\t\tSystem.out.print(\"Enter the basic salary of an employee:\");\n\t\tbsal=scan.nextInt();\n\t\tcalculate();\n\t}\n\tpublic void calculate()  \n\t{\n\t\tif(bsal<=10000)\n\t\t\tgross=(float)(bsal+bsal*0.20*0.80);\n\t\telse if(bsal>10000 && bsal<=20000)\n\t\t\tgross=(float)(bsal+bsal*0.25+bsal*0.90);\n\t\telse if(bsal>20000)\n\t\t\tgross=(float)(bsal+bsal*0.30+bsal*0.95);\t\n\t}\n\tpublic void display()  \n\t{\n\t\tSystem.out.println(\"Id: \"+empid);\n\t\tSystem.out.println(\"Name: \"+empname);\n\t\tSystem.out.println(\"Basic salary: \"+bsal);\n\t\tSystem.out.println(\"Gross salary: \"+gross);\n\t}\n}\nclass GrossSalary\n{\n\tpublic static void main(String args[])\n\t{\n\t\tEmployee obj=new Employee();\n\t\tobj.read(); \n\t\tobj.display();\n\t}\n}\n\n"
+  },
+  {
+    "name": "HarshadNumber",
+    "level": "Beginner",
+    "description": "Write a Java program to check whether a given positive number is a \nHarshad Number or not.\n\nDescription : \nA harshad number in a given number base, is an integer that is divisible by the \nsum of its digits when written in that base.\nExample: Number 200 is a Harshad Number because the sum of digits 2 and 0 and 0 \nis 2(2+0+0) and 200 is divisible by 2. \nNumber 171 is a Harshad Number because the sum of digits 1 and 7 and 1 \nis 9(1+7+1) and 171 is divisible by 9.\n\nHarshad Number is also called as Niven Number.\n\nSample 1:\ninput=200\noutput=Yes\n\nSample 2:\ninput=101\noutput=No\n\nSample 3:\ninput=-12\noutput=-1\n\nNote : if a given number is negative print -1.\n\ncase =1\ninput=201\noutput=Yes\n\ncase =2\ninput =171\noutput =Yes\n\ncase =3\ninput=100\noutput=Yes\n\ncase =4\ninput=119\noutput=No\n\ncase =5\ninput =-171\noutput =-1",
+    "code": "\nimport java.util.Scanner;\npublic class HarshadNumber\n{\n     public static void main(String args[])\n    {\n        Scanner sc = new Scanner(System.in);\n        int num = sc.nextInt();\n        int temp = num, r, sum = 0;\n\t\tif(num<=0)\n\t\t\tSystem.out.print(\"-1\");\n\t\telse\n\t\t{\n\t\t\twhile(temp>0)\n\t\t\t{\n\t\t\t\tr = temp%10;\n\t\t\t\tsum = sum + r;\n\t\t\t\ttemp = temp/10;\n\t\t\t}\n\n\t\t\tif(num%sum == 0)\n\t\t\t\tSystem.out.println(\"Yes\");\n\t\t\telse\n\t\t\t\tSystem.out.println(\"No\"); \n\t\t}\t\t\t\t\n    }\n}\n"
+  },
+  {
+    "name": "LargestDigit",
+    "level": "Beginner",
+    "description": "Write a Java program to print the Largest digit of a given positive number. \n\nSample 1:\ninput = 12534\noutput = 5\n\nSample 2:\ninput = 100\noutput = 1",
+    "code": "\n\nimport java.util.Scanner;\npublic class LargestDigit \n{\n\tpublic static void main(String[] args) \n\t{\n\t\tScanner cs = new Scanner (System.in);\n\t\tint num = cs.nextInt ();\n\t\tint reminder, Largest= 0;\n\t\twhile (num > 0)\n\t\t{\n\t\t\treminder = num % 10;\n\t\t\tif (Largest< reminder) \n\t\t\t\tLargest= reminder;\n\t\t\tnum = num / 10;\n\t\t}\n\t\tSystem.out.println(Largest);\n\t}\n}\n"
+  },
+  {
+    "name": "NaturalNumbers",
+    "level": "Beginner",
+    "description": "Write a java program to print n natural numbers using recursion\n\nSample 1:\ninput=4\noutput=\n1\n2\n3\n4",
+    "code": "\nimport java.util.Scanner;\npublic class NaturalNumbers\n{\n    public static void main(String[] args) \n    {\n        Scanner s = new Scanner(System.in);\n\t\tint n = s.nextInt();\n        NaturalNumbers obj = new NaturalNumbers();\n\t\tobj.natural(1,n);\n\t}\n    void natural(int i, int num)\n    {\n        if(i <= num)\n        {\n            System.out.print(i+\" \");\n            natural(i+1,num);\n        }\n    }\n}\n\n\n"
+  },
+  {
+    "name": "NumberConversion",
+    "level": "Beginner",
+    "description": "Write a Java program for given number in a given base, \nconvert it into another target base.\n\nExample 1:\nInput=\nNumber:1101\nSource base:2\nTarget base:10\n\nOutput=\nResult:13\n\nExample 2:\ninput=\nNumber:555\nSource base:8\nTarget base:10\n\nOutput=\nResult:365",
+    "code": "\nimport java.util.Scanner; \npublic class NumberConversion\n{ \n\tpublic static String baseConversion(String number, int sBase, int dBase) \n\t{\n\t\treturn Integer.toString(Integer.parseInt(number, sBase), dBase); \n\t} \n\tpublic static void main(String[] args) \n\t{\n\t\tScanner sc=new Scanner(System.in);\n\t\tSystem.out.print(\"Number:\");\n\t\tString number = sc.next(); \n\t\tSystem.out.print(\"Source base:\");\n\t\tint sBase = sc.nextInt();  \n\t\tSystem.out.print(\"Target base:\");\n\t\tint dBase = sc.nextInt();\n\t\tSystem.out.println(\"Result:\"+baseConversion(number, sBase, dBase)); \n\t} \n} \n"
+  },
+  {
+    "name": "oddEvenZero",
+    "level": "Beginner",
+    "description": "Write a Java program to accept a number from user and count zero, odd and even digits \nof the entered number.\n\nSample:\nInput=\nEnter an integer: 12045067\nOutput=\nZero: 2\nEven: 3\nOdd: 3",
+    "code": "\nimport java.util.Scanner;\npublic class oddEvenZero\n{\n\tpublic static void main(String[] args)\n\t{\n\t\tScanner scan = new Scanner (System.in);\n\t\tint value;\n\t\tint evenCount = 0, oddCount = 0, zeroCount = 0;\n\t\tSystem.out.print(\"Enter an integer: \");\n\t\tvalue = scan.nextInt();\n\t\twhile (value > 0)\n\t\t{\n\t\t\tif (value%10==0)\n\t\t\t\tzeroCount++;\n\t\t\telse if (value%2==0)\n\t\t\t\tevenCount++;\n\t\t\telse\n\t\t\t\toddCount++;\n\t\t\n\t\t\tvalue = value / 10;\n\t\t}\n\t\tSystem.out.println(\"Zero: \"+zeroCount+\"\\nEven: \"+evenCount+\"\\nOdd:  \"+oddCount+\"\\n\\n\");\n\t}\n}\n"
+  },
+  {
+    "name": "Palindrome",
+    "level": "Beginner",
+    "description": "Write a java program to check whether entered number is palindrome number or not\n\nsample input & output\n\ninput = 363\noutput = palindrome\n\ninput = 233\noutput = not a palindrome",
+    "code": "\n\nimport java.util.Scanner;\npublic class Palindrome \n{\n    public static void main(String args[])\n    {\n\t\tScanner in = new Scanner(System.in);\n\t\t//System.out.print(\"Input a number: \");\n\t\tint n = in.nextInt();\n\t\tint sum = 0, r;\n\t\tint temp = n;    \n\t\twhile(n>0)\n\t\t{    \n\t\tr = n % 10;   \n\t\tsum = (sum*10)+r;    \n\t\tn = n/10;    \n\t\t}    \n\t\tif(temp==sum)    \n\t\tSystem.out.println(\"palindrome\");    \n\t\telse    \n\t\tSystem.out.println(\"not a palindrome\");    \n\t}\n}\n"
+  },
+  {
+    "name": "PerfectPower",
+    "level": "Beginner",
+    "description": "Write a java program to find given number is perfect power or not\n\nGiven a positive integer which fits in a 32 bit signed integer,\nfind if it can be expressed as A^P where 10 > P > 1 and A > 0. \nA and P both should be integers.\n\nSample input/output\n125\nTrue  \n\nexplanation\nas 5^3 = 125. \n\n5\nFalse",
+    "code": "\n\nimport java.util.*;\nclass PerfectPower\n{\n\tpublic static void main(String[] args) \n\t{\n\t\tScanner sc=new Scanner(System.in);\n\t\tint x=sc.nextInt();\n\t\tboolean b=false;\n\t\tint i=0,j=0,x1=0,y1=0;\n\t\t\n\t\tfor(i=1;i<=x/2;i++)//i=1 to 62\n\t\t{\n\t\t\tfor(j=2;j<10;j++)//j=2\n\t\t\t{\n\t\t\t\tif(Math.pow(i,j)==x)//1^2==125\n\t\t\t\t{\n\t\t\t\t\tb=true;\n\t\t\t\t\tx1=i;\n\t\t\t\t\ty1=j;\n\t\t\t\t\tbreak;\n\t\t\t\t\t\n\t\t\t\t}\n\t\t\t}\t\t\t\t\n\t\t}\n\t\t\n\t\tif(b==true)\n\t\t\tSystem.out.println(\"True: \"+x1+\" power \" +y1);\n\t\telse\n\t\t\tSystem.out.println(\"False\");\n\t}\n}\n\n"
+  },
+  {
+    "name": "PrimeSum_Number",
+    "level": "Beginner",
+    "description": "Write a Java program to find sum of prime numbers in a given number\nNote : if n<=0, print -1\n\nsample 1:\ninput=3526 \noutput=10 \n\nSample 2:\ninput=2468 \noutput=2",
+    "code": "\nimport java.util.Scanner;\npublic class PrimeSum_Number \n{\n\tpublic static void main(String[] args) \n\t{\n\t\tScanner sc=new Scanner(System.in);\n\t\tint i, digit,count,sum=0;\n\t\tint num=sc.nextInt();\n\t\tint temp=num;\n\t\twhile(num>0)\n\t\t{\n\t\t\tdigit=num%10;\n\t\t\tcount = 0;\n\t\t    for (i = 2; i <= digit/2; i++)\n\t\t    {\n\t\t    \tif(digit % i == 0)\n\t\t    \t{\n\t\t    \t\tcount++;\n\t\t    \t\tbreak;\n\t\t    \t}\n\t\t    }\n\t\t    if(count == 0 && digit != 1 )\n\t\t    {\n\t\t    \tsum+=digit;\n\t\t    }\n\t\t    num=num/10;\n\t\t}\n\t\tif(temp<=0)\n\t\t\tSystem.out.println(\"-1\");\n\t\telse\n\t\t\tSystem.out.println(sum);\n\t}\n}\n"
+  },
+  {
+    "name": "Small_Large",
+    "level": "Beginner",
+    "description": "write a java program to read positive number and print the smallest(Not leading Zeros)\nand largest number which can be obtained by rearranging the digits of given number\n\noutput format: first print the smallest number followed by largest number\n\nSample:\n \ninput=3169\noutput=\n1369\n9631\n\ninput=4001\noutput=\n1004\n4100",
+    "code": "\nimport java.util.Scanner;\npublic class Small_Large \n{ \n\tstatic int largest(int num) \n\t{\n\t\tint[] freq = new int[10]; \n        // count frequency of each digit in the number \n        while (num > 0) \n        { \n            int d = num % 10; \n            freq[d]++; \n            num = num / 10; \n        }\n\t\tint result=0;\n\t\tfor (int i = 9 ; i >= 0 ; i--)\n\t\t{\t\t\t\n            while (freq[i] != 0)\n\t\t\t{\t\t\t\t\n                result = result * 10 + i; \n\t\t\t\tfreq[i]--;\n\t\t\t}\n\t\t}\n\t\treturn result;\n\t} \n\tstatic int smallest(int num) \n    { \n        int[] freq = new int[10]; \n        while (num > 0) \n        { \n            int d = num % 10; \n            freq[d]++; \n            num = num / 10; \n        }\n        // Set the LEFTMOST digit to minimum expect 0 \n        int result = 0; \n        for (int i = 1 ; i <= 9 ; i++) \n        { \n            if (freq[i] != 0) \n            { \n                result = i; \n                freq[i]--; \n                break; \n            } \n        } \n        for (int i = 0 ; i <= 9 ; i++)\n\t\t{\t\t\t\n            while (freq[i] != 0)\n\t\t\t{\t\t\t\t\n                result = result * 10 + i; \n\t\t\t\tfreq[i]--;\n\t\t\t}\n\t\t}\n        return result; \n    } \n    public static void main(String args[]) \n    {\n\t\tScanner sc=new Scanner(System.in);\n        int num = sc.nextInt();\n\t\tSystem.out.println(smallest(num));\t\t\n\t\tSystem.out.println(largest(num)); \n\t\t \n\t} \n} \n"
+  },
+  {
+    "name": "SpyNumber",
+    "level": "Beginner",
+    "description": "Write a Java program to check whether the given non-negative number is SPYNUMBER or not.\n\nA SPYNUMBER is a number where the sum of its digits equals the product of its digits.\n\nEx: 1124 is SPYNUMBER, because the sum of its digits(1+1+2+4) = 8 and\n    the product of its digits (1*1*2*4) = 8 is equal.\n\nIf the number is SPYNUMBER print true else print false.\n\nSample :\ninput=123\noutput=true\n\ninput=1113 \noutput=false\n\ninput=-5\noutput=-1",
+    "code": "\nimport java.util.*;\n\nclass SpyNumber\n{\n    public static void main(String args[])\n    {\n        Scanner sc=new Scanner(System.in);\n\t\tint n=sc.nextInt();\n\t\tint temp=n;\n\t\tint sum=0,prod=1;\n\t\tif(n>=0)\n\t\t{\n\t\t\twhile(temp>0)\n\t\t\t{\n\t\t\t\tint d=temp%10;\n\t\t\t\tsum+=d;\n\t\t\t\tprod*=d;\n\t\t\t\ttemp/=10;\n\t\t\t}\n\t\t\tif(sum==prod)\n\t\t\t\tSystem.out.println(\"true\");\n\t\t\telse\n\t\t\t\tSystem.out.println(\"false\");\n\t\t}\n\t\telse\n\t\t\tSystem.out.println(\"-1\");\n\t}\n}\n\t\t"
+  },
+  {
+    "name": "StrongNumber",
+    "level": "Beginner",
+    "description": "Write a java program to check if a given positive number is a strong number. \nA strong number is a number whose sum of factorial of each digit is the number itself. \nPrint 1 if it is strong number, else 0.\n\nexample: 145\n1! + 4! + 5! = 1+24+120 = 145\n\nSample:\nInput=145\noutput=1\n\nInput=128\noutput=0\n\nInput=1\nOutput=1\n\nInput=40585\nOutput=1",
+    "code": "\nimport java.util.Scanner;\nclass StrongNumber\n{\n\tpublic static void main(String args[])\n\t{\n\t\tScanner sc=new Scanner(System.in);\n\t\tint n=sc.nextInt();\n\t\tint temp=n,sum=0;\n\t\twhile(temp>0)\n\t\t{\n\t\t\tint dig=temp%10;\n\t\t\tint fact=1;\n\t\t\ttemp=temp/10;\n\t\t\twhile(dig>0)\n\t\t\t{\n\t\t\t\tfact=fact*dig--;\n\t\t\t}\n\t\t\tsum+=fact;\n\t\t}\n\t\tif(sum==n)\n\t\t\tSystem.out.println(\"1\");\n\t\telse\n\t\t\tSystem.out.println(\"0\");\n\t}\n}"
+  },
+  {
+    "name": "SumReverse",
+    "level": "Beginner",
+    "description": "Anik, a student of mathematics is doing a research for his PhD degree. \nHe thinks if he can complete his work, it will help mankind a lot. \nBut the problem is as part of his research he needs to check sum of two numbers in a special way. \nThe numbers themselves will be big enough plus the sum needs to be done in a reversed way. \nFor example, if two numbers were 24 and 13, we have to first reverse these numbers to make them 42 and 31 and then we have to do the addition so the sum will be 42 + 31 = 73. \nAfterwards he needs to output the result as reversed again, so the output will be 37 actually. \nOne advantage he has is that the input numbers will never have leading zero. \nBut the resulted sum if has any leading zeroes need to be removed. \nFor example, \nif we have two numbers such as 911 and 199, then the reversed numbers will be 119 and 991 and the sum will be 119 + 991 = 1110. \nSo, if we reverse, the output should be 0111, but actually we have to consider 111 as output because we should remove all leading zeroes in final output. \nAs it is hard for Anik, so he wants to hire a freelancer who can write a small program to help him. \n\nSample:\ninput=\n199 \n911\noutput=\n111\n\ninput=19\n22\noutput=311",
+    "code": "\nimport java.util.Scanner;\npublic class SumReverse\n{\n\tpublic static int reverse(int num)\n\t{\n\t\tint sum=0,digit=0;\n\t\twhile (num > 0)\n\t\t{\n\t\t\tdigit =num%10;\n\t\t\tsum=sum*10+digit;\n\t\t\tnum=num/10;\n\t\t}\n\t\treturn sum;\n\t}\n\tpublic static void main(String[] args)\n\t{\n\t\tScanner sc = new Scanner (System.in);\n\t\tint num1 = sc.nextInt();\n\t\tint num2 = sc.nextInt();\n\t\tint sum = reverse(num1)+reverse(num2);\n\t\tSystem.out.println(reverse(sum));\n\t\t\n\t}\n}\n/*Test cases:\ncase=1\ninput=\n199 \n911\noutput=\n111\n\ncase=2\ninput=19\n22\noutput=311\n\ncase=3\ninput=129\n125\noutput=2441\n*/"
+  },
+  {
+    "name": "Swap",
+    "level": "Beginner",
+    "description": "Write a Java Program to swap two numbers without using third variable.\n\nSample :\ninput=10\n20\noutput=20\n10",
+    "code": "\nimport java.util.Scanner;\n \npublic class Swap\n{\n\tpublic static void main(String[] args) \n\t{\n\t    Scanner in= new Scanner(System.in);\n\t\tint n1 = in.nextInt();\n\t\tint n2 = in.nextInt();\n\t\tn1=n1+n2;\n\t\tn2=n1-n2;\n\t\tn1=n1-n2;\n\t\tSystem.out.println(n1+\"\\n\"+n2);\n\t}\n}\n"
+  },
+  {
+    "name": "Time_words",
+    "level": "Beginner",
+    "description": "Write a program to read the two integer values from a user. \nFirst integer say time in hours. Second integer says time in minutes.\nConsidering above two values and print them in words.\n\nSample:\nInput= \n5\n0\nOutput=\nfive o' clock\n\nInput= \n6\n24\nOutput=\ntwenty four minutes past six",
+    "code": "\n\nimport java.util.Scanner;\nclass Time_words\n{ \n\tstatic void printWords(int h, int m) \n\t{ \n\t\tString nums[] = { \"zero\", \"one\", \"two\", \"three\", \"four\", \n\t\t\t\t\t\t\t\"five\", \"six\", \"seven\", \"eight\", \"nine\", \n\t\t\t\t\t\t\t\"ten\", \"eleven\", \"twelve\", \"thirteen\", \n\t\t\t\t\t\t\t\"fourteen\", \"fifteen\", \"sixteen\", \"seventeen\", \n\t\t\t\t\t\t\t\"eighteen\", \"nineteen\", \"twenty\", \"twenty one\", \n\t\t\t\t\t\t\t\"twenty two\", \"twenty three\", \"twenty four\", \n\t\t\t\t\t\t\t\"twenty five\", \"twenty six\", \"twenty seven\", \n\t\t\t\t\t\t\t\"twenty eight\", \"twenty nine\", \n\t\t\t\t\t\t}; \n\t\n\t\tif (m == 0) \n\t\t\tSystem.out.println(nums[h] + \" o' clock \"); \n\t\n\t\telse if (m == 1) \n\t\t\tSystem.out.println(\"one minute past \" + nums[h]); \n\t\n\t\telse if (m == 59) \n\t\t\tSystem.out.println(\"one minute to \" + nums[(h % 12) + 1]); \n\t\n\t\telse if (m == 15) \n\t\t\tSystem.out.println(\"quarter past \" + nums[h]); \n\t\n\t\telse if (m == 30) \n\t\t\tSystem.out.println(\"half past \" + nums[h]); \n\t\n\t\telse if (m == 45) \n\t\t\tSystem.out.println(\"quarter to \"+nums[(h % 12) + 1]); \n\t\n\t\telse if (m <= 30) \n\t\t\tSystem.out.println( nums[m] + \" minutes past \" + nums[h]); \n\t\n\t\telse if (m > 30) \n\t\t\tSystem.out.println( nums[60 - m] + \" minutes to \" +\tnums[(h % 12) + 1]); \n\t} \n\tpublic static void main(String []args) \n\t{ \n\t\tScanner sc=new Scanner(System.in);\n\t\tint h = sc.nextInt(); \n\t\tint m = sc.nextInt(); \n\t\tprintWords(h, m); \n\t} \n} \n/*Test cases:\ncase=1\ninput=5\n45\noutput=quarter to six\n\ncase=2\ninput=5\n1\noutput=one minute past five\n\ncase=3\ninput=8\n59\noutput=one minute to nine\n*/\n"
+  },
+  {
+    "name": "UglyNumber",
+    "level": "Beginner",
+    "description": "Write a program to check whether a given number is an ugly number.\nUgly numbers are positive numbers whose prime factors only include 2, 3, 5 .\nExample 1:\nInput: 6\nOutput: true\nExplanation: 6 = 2 \u00d7 3\n\nExample 2:\nInput: 8\nOutput: true\nExplanation: 8 = 2 \u00d7 2 \u00d7 2\n\nExample 3:\nInput: 14\nOutput: false\n\nExplanation: 14 is not ugly since it includes another prime factor 7.\n\nNote:\n1. 1 is typically treated as an ugly number.\n2. Input is within the 32-bit signed integer range: [-2 , 2 - 1].",
+    "code": "\n\nimport java.util.Scanner;\n\nclass UglyNumber \n{\n    public static boolean isUgly(int num) \n\t{\n        for (int i=2; i<=5 && num>1; i++)\n\t\t{\n            while (num % i == 0)\n                num /= i;\n\t\t}\n        return num == 1;\n    }\n\tpublic static void main(String args[])\n\t{\n\t\tScanner sc=new Scanner(System.in);\n\t\tint n=sc.nextInt();\n\t\tSystem.out.println(isUgly(n)) ;\n\t}\n}\n\n\n\n/*test cases:\ncase=1\nInput=6\nOutput=true\n\ncase=2\nInput=30\nOutput=true\n\ncase=3\nInput=14\nOutput=false\n\ncase=4\nInput=44\nOutput=false\n*/"
+  },
+  {
+    "name": "UniquePrimeFactor",
+    "level": "Beginner",
+    "description": "Write a java program \nGiven a number n, write an efficient function to print all unique prime factors of n. \nFor example, if the input number is 12, then output should be \"2 3\".\nAnd if the input number is 315, then output should be \"3 5 7\".\n\nSample Input:\n315\n\nSample Output:\n3 5 7",
+    "code": "\nimport java.util.Scanner;\nclass UniquePrimeFactor\n{\n    public static void primeFactors(int n) \n    {\n\t\tint c=0;\n        while (n%2==0) \n        { \n\t\t\tif(c==0)\n\t\t\t{\n\t\t\t\tSystem.out.print(2 + \" \"); \n\t\t\t\tc++;\n\t\t\t}\n            n /= 2; \n        } \n        \n        for (int i = 3; i <= Math.sqrt(n); i+= 2) \n        { \n            c=0;\n            while (n%i == 0 && n>1) \n            { \n\t\t\t\tif(c==0)\n\t\t\t\t{\n\t\t\t\t\tSystem.out.print(i + \" \"); \n\t\t\t\t\tc++;\n\t\t\t\t}\n\t\t\t\tn /= i; \n            } \n        }\n        if (n > 2) \n            System.out.print(n); \n    } \n  \n    public static void main (String[] args) \n    { \n\t\tScanner sc=new Scanner(System.in);\n        int n = sc.nextInt(); \n        primeFactors(n); \n    } \n}"
+  },  
+  {
+    "name": "Character Grouping",
+    "level": "Beginner",
+    "description": "Write a Java program to check whether a character(read only one character) is an alphabet, digit or special character.",
+    "code": "import java.util.Scanner;\npublic class Character_Check \n{\n    public static void main(String[] args) \n\t{\n\t\tScanner sc=new Scanner(System.in);\n\t\tString ch=sc.next();\n        char c = ch.charAt(0);\n        if( (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))\n            System.out.println(\"Alphabet\");\n\t\telse if(c >= '0' && c <= '9')\n            System.out.println(\"Digit\");\n        else\n            System.out.println(\"Special Character\");\n    }"
+  },
     {
         "name": "AccountsMerge.java",
         "level": "Intermediate",

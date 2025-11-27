@@ -8,4 +8,5 @@ from json file in the same list item.
 generate json file with name as file name level as dvanced description must take from file between multiline comments /* */ and code must be take form the file only
 
 git add .
-git push -u origin web-fs-programs
+git commit -m "Initial commit for web project"
+git push origin web-fs-programs
